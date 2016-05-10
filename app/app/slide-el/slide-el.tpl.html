@@ -1,0 +1,64 @@
+<div ng-style="$ctrl.wcData.styles" 
+     layout="row" layout-align="center center">
+  
+  <div sn-skrollr
+     data-140p-bottom="transform: translateY(-100vh)" 
+     data-center="transform: translateY(0vh)"
+     data--140p-top="transform: translateY(100vh)"
+       ng-class="{'background-blur': !$ctrl.wcData.background.preventBlur, background: $ctrl.wcData.background.preventBlur}"
+       ng-style="{backgroundImage: 'url('+$ctrl.wcData.background.src+')'}">
+  </div>
+  <div sn-skrollr
+       data-100p-bottom="{{$ctrl.scroll.enter}}"
+       data-center="{{$ctrl.scroll.middle}}"
+       data--100p-top="{{$ctrl.scroll.exit}}"
+       layout="row" layout-xs="column"
+       layout-margin
+       layout-align="center center"
+       class="inner-slide">
+    
+    <div flex-gt-sm="50"
+         flex-xs="noshrink"
+         layout="column" 
+         flex-order-xs="2" 
+         layout-align="{{$ctrl.layoutAlign}}" 
+         layout-padding
+         ng-if="$ctrl.wcData.description">
+      
+      <h1>{{$ctrl.wcData.title[$ctrl.wcLang]}}</h1>
+      <div class="separator" 
+           ng-style="{background: $ctrl.wcData.styles.color}"
+           ng-if="$ctrl.wcData.title"></div>
+      <p>{{$ctrl.wcData.description[$ctrl.wcLang]}}</p>
+      
+    </div>
+    
+    <div flex-gt-sm="50"
+         flex-xs="noshrink"
+         layout="column" 
+         flex-order-xs="2" 
+         layout-align="{{$ctrl.layoutAlign}}" 
+         layout-padding
+         ng-if="$ctrl.wcData.quote">
+      
+      <p class="quote">{{$ctrl.wcData.quote.text[$ctrl.wcLang]}}</p>
+      <p class="quote-autor">{{$ctrl.wcData.quote.author}}</p>
+      
+    </div>
+    
+    <div flex-gt-sm="50"
+         flex-xs="noshrink"
+         layout="column" 
+         layout-align="center center" 
+         layout-padding
+         ng-if="$ctrl.wcData.img">
+      <figure>
+        <img ng-src="{{$ctrl.wcData.img.src}}">
+        <figcaption>{{$ctrl.wcData.img.caption[$ctrl.wcLang]}}</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="background-caption">
+    <figcaption>{{$ctrl.wcData.background.caption[$ctrl.wcLang]}}</figcaption>
+  </div>
+</div>

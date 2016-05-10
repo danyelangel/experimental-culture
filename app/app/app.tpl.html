@@ -1,0 +1,47 @@
+<md-toolbar ng-if="true" class="toolbar" md-whiteframe="3" layout-align="center center">
+  <div class="md-toolbar-tools" style="max-width: 1024px;">
+    <h3>
+      <span>{{$ctrl.lang=='en' ? 'Experimental Culture' : 'Cultura Experimental'}}</span>
+    </h3>
+    <div flex></div>
+    <md-button class="md-icon-button" aria-label="English"
+               ng-click="$ctrl.lang = 'en'"
+               ng-disabled="$ctrl.lang === 'en'">
+      En
+    </md-button>
+    <md-button class="md-icon-button" aria-label="Español"
+               ng-click="$ctrl.lang = 'es'"
+               ng-disabled="$ctrl.lang === 'es'">
+      Es
+    </md-button>
+  </div>
+</md-toolbar>
+<div layout="column">
+  <div sn-skrollr
+       style="transform: translateY(0vh)"
+       data-center="transform: translateY(0vh); opacity: 1"
+       data--100p-top="transform: translateY(60vh); opacity: 0.3"
+       class="splash" 
+       layout="column" layout-align="center center" layout-padding>
+    <div class="background"
+         ng-style="{backgroundImage: 'url(/images/cover.jpg)', filter: 'none'}">
+    </div>
+    <div sn-skrollr
+         data-center="transform: translateY(0vh); opacity: 1"
+       data--100p-top="transform: translateY(50vh); opacity: 0.3" 
+         layout="column"
+         layout-align="center center">
+    <h1>{{$ctrl.lang=='en' ? 'Experimental Culture' : 'Cultura Experimental'}}</h1>
+    <div class="separator" style="background-color: #fff"></div>
+    <p style="text-align: center">{{$ctrl.intro[$ctrl.lang]}}</p>
+    <p style="text-align: right; margin: 0">{{$ctrl.lang=='en' ? 'by' : 'por'}} Daniel Ángel</p>
+      <i class="material-icons down-arrow">keyboard_arrow_down</i>
+    </div>
+  </div>
+  
+  <slide-el ng-repeat="slide in $ctrl.slides" wc-data="slide" slide-id="$index" wc-lang="$ctrl.lang"></slide-el>
+  
+  <div class="footer" style="text-align: center;">
+    <h1>&copy; <a href="http://danielangel.co" target="_blank">Daniel Ángel</a> 2016</h1>
+  </div>
+</div>
